@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "./withRouter";
 import { Grid, Button, ButtonGroup, Typography} from "@material-ui/core";
 import CreateRoomPage from "./CreateRoomPage";
+import MusicPlayer from "./MusicPlayer";
 
 class Room extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class Room extends Component {
     }
 
     componentDidMount() {
-        this.interval = setInterval(this.getCurrentSong, 1000);
+        this.interval = setInterval(this.getCurrentSong, 5000);
     }
 
     componentWillUnmount() {
@@ -134,6 +135,7 @@ class Room extends Component {
                         Code: {this.roomCode}
                     </Typography>
                 </Grid>
+                <MusicPlayer {...this.state.song} />
                 <Grid item xs={12} align="center">
                     <Typography variant="h5" component="h5">
                         Votes: {this.state.votesToSkip}
